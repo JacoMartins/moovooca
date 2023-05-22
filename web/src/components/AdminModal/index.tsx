@@ -41,8 +41,6 @@ export default function AdminModal({ isOpen, onRequestClose, modalType, modalIte
     await api.get(`/${route}?id=${value}`).then(res => setFilterViewData({ ...filterViewData, [key]: res.data })).catch(
       () => setFilterViewData({ ...filterViewData, [key]: null })
     )
-    console.log(filterViewData)
-    console.log(filterViewData)
 
     setButtonBusy(false)
   }

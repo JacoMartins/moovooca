@@ -29,7 +29,6 @@ export default function Reservas({ me }: { me: Usuario }) {
   }
 
   async function handleDeleteBooking(id: number) {
-    console.log(`/reserva?id=${id}`)
     await api.delete(`/reserva?id=${id}`)
       .catch(except => console.log(except))
     setReload(!reload)

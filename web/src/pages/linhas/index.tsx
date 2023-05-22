@@ -60,8 +60,6 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
     }
   }, [modalType, page])
 
-  console.log(head_coletivos)
-
   Modal.setAppElement('.react-modal')
 
   return (
