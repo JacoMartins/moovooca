@@ -153,10 +153,10 @@ export default function AdminUsuarios({ item_id, handleSub, handleOpenSidebar, h
           <button onClick={handleOpenSidebar}>
             <List size={24} weight='regular' color="rgba(0, 0, 0, 0.8)" />
           </button>
-          <h2>Linhas</h2>
+          <h2>Usuários</h2>
         </div>
 
-        <h3 className='lead'>Selecione, adicione, altere ou remova linhas.</h3>
+        <h3 className='lead'>Selecione, adicione, altere ou remova usuários.</h3>
         <div className="actionsContainer">
           {usuarios &&
             <button onClick={handleOpenExportModal}>
