@@ -141,9 +141,9 @@ class Viagem(MethodView):
   @blp.response(201, ViagemSchema)
   def post(self, viagem_data):
     usuario_admin = get_jwt()["admin"]
-    usuario_motorista = get_jwt()["motorista"]
+    usuario_tipo = get_jwt()["tipo"]
     
-    if usuario_admin or usuario_motorista:
+    if usuario_admin or usuario_tipo == 1:
       viagem = ViagemModel(**viagem_data)
 
       try:

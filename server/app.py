@@ -86,8 +86,7 @@ def create_app(db_url=None):
     if usuario.admin == 0: claims["admin"] = False
     else: claims["admin"] = True
 
-    if usuario.motorista == 0: claims["motorista"] = False
-    else: claims["motorista"] = True
+    claims["tipo"] = usuario.tipo
 
     return claims
 

@@ -96,7 +96,7 @@ export default function AdminUsuarios({ item_id, handleSub, handleOpenSidebar, h
   }
 
   async function handleEditItem(id: number, data: Usuario) {
-    const { id: _id, criado_em, atualizado_em, reservas, ...filteredData } = data
+    const { id: _id, criado_em, atualizado_em, reservas, viagens, ...filteredData } = data
 
     setButtonBusy(true)
 

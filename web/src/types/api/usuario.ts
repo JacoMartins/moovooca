@@ -1,4 +1,5 @@
 import { reserva } from "./reserva";
+import { viagem } from "./viagem";
 
 export interface Usuario {
   id: number | null;
@@ -7,9 +8,10 @@ export interface Usuario {
   nome_usuario: string;
   senha?: string;
   email: string;
-  admin: number;
-  motorista: number;
+  admin: boolean;
+  tipo: number;
   reservas?: reserva[];
+  viagens?: viagem[]
   criado_em: string;
   atualizado_em?: string;
 }

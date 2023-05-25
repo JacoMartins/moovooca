@@ -13,9 +13,9 @@ class LinhaModel(db.Model):
   valor_meia = db.Column(db.Float(precision=2), nullable=False)
   tipo = db.Column(db.String(20), nullable=False)
   capacidade_assento = db.Column(db.Integer, nullable=False)
+  tags = db.Column(db.String, nullable=True)
   criado_em = db.Column(db.DateTime, default=datetime.now(tz=timezone.utc), nullable=False)
   atualizado_em = db.Column(db.DateTime, nullable=True)
-  tags = db.Column(db.String, nullable=True)
 
   paradas = db.relationship("ParadaModel", back_populates="linha", cascade="all, delete")
   viagens = db.relationship("ViagemModel", back_populates="linha", cascade="all, delete")

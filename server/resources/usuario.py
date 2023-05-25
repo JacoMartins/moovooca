@@ -111,7 +111,7 @@ class Usuario(MethodView):
       usuario.sobrenome = usuario_data['sobrenome']
       usuario.email = usuario_data['email']
       usuario.admin = usuario_data['admin']
-      usuario.motorista = usuario_data['motorista']
+      usuario.tipo = usuario_data['tipo']
       usuario.atualizado_em = datetime.now(tz=timezone.utc)
 
     try:

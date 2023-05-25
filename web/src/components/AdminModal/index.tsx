@@ -99,7 +99,7 @@ export default function AdminModal({ isOpen, onRequestClose, modalType, modalIte
   function handleChangeInput(key: string, value: any, event: ChangeEvent<HTMLInputElement>) {
     setItemDataRequest({
       ...itemDataRequest,
-      [key]: (key === 'cod' || key === 'latitude' || key === 'longitude') ? event.target.value : typeof value === 'number' ? event.target.valueAsNumber : event.target.value
+      [key]: key === 'admin' ? event.currentTarget.checked : (key === 'cod' || key === 'latitude' || key === 'longitude') ? event.target.value : typeof value === 'number' ? event.target.valueAsNumber : event.target.value
     })
   }
 
@@ -120,6 +120,7 @@ export default function AdminModal({ isOpen, onRequestClose, modalType, modalIte
       case (key.startsWith('dat') || key === 'criado_em' || key === 'atualizado_em' || key === 'horario_partida' || key === 'horario_chegada'): return 'datetime-local'
       case (key === 'horario_inicio' || key === 'horario_fim'): return 'time'
       case (key === 'senha'): return 'password'
+      case (key === 'admin'): return 'checkbox'
       case (typeof value === 'number'): return 'number'
       case (typeof value === 'string'): return 'text'
     }
@@ -176,14 +177,16 @@ export default function AdminModal({ isOpen, onRequestClose, modalType, modalIte
                     <div key={key + value + itemData.id} style={{
                       display: 'flex',
                       alignItems: 'center',
+                      justifyContent: 'left',
                       flexDirection: 'row',
-                      gap: '0.25rem'
+                      gap: '0.25rem',
                     }}>
                       {key}:
                       <input
-                        className="editInput"
+                        className={key !== 'admin' && 'editInput'}
                         type={type}
                         defaultValue={defaultValue}
+                        defaultChecked={value ? true : false}
                         onChange={event => handleChangeInput(key, value, event)}
                         disabled={key === 'id' || key === 'criado_em' || key === 'atualizado_em'}
                       />

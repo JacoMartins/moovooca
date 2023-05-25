@@ -15,6 +15,14 @@ export default function EditableData({ data, tableSchema, handleOpenMenuModal }:
           return null
         }
 
+        if (typeof value === 'boolean') {
+          return (
+            <td key={value + (Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000).toString() + index.toString()}>
+              {value? 'true' : 'false'}
+            </td>
+          )
+        }
+
         return (
           <td key={value + (Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000).toString() + index.toString()}>
             {value}

@@ -5,7 +5,7 @@ export interface viagem {
   id: number | null;
   id_linha: number | null;
   id_sentido: number | null;
-  id_motorista: number | null;
+  id_usuario: number | null;
   data: string;
   origem: string;
   destino: string;

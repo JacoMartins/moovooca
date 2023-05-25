@@ -26,6 +26,10 @@ export function clean_object(inputObject: Record<string, any>): Record<string, a
     if (typeof value === "number") {
       cleanedObject[key] = isNaN(value) ? null : 0;
     }
+
+    if (typeof value === 'boolean') {
+      cleanedObject[key] = false
+    }
   }
 
   return cleanedObject;
