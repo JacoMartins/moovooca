@@ -1,12 +1,22 @@
 import { styled } from '../'
+import welcome from '../../assets/img/welcome.png'
 
 export const Main = styled('main', {
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
+  flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'center',
   height: '100vh',
   width: '100vw',
+
+  '@media screen and (min-width: 768px)': {
+    backgroundImage: `url(${welcome.src})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    alignItems: 'center',
+    justifyContent: 'right',
+  },
 
   p: {
     margin: 0
@@ -20,21 +30,55 @@ export const Main = styled('main', {
     gap: '0.5rem',
     padding: '0.75rem',
 
-    border: 'solid 1px $black_150',
-    borderRadius: '0.625rem',
+    marginRight: '10rem',
 
-    width: '20rem',
+    borderRadius: '0.5rem',
+    boxShadow: '0px 0.75rem 1rem rgba(0, 0, 0, 0.15)',
+
+    backgroundColor: 'white',
+
+    maxWidth: '20rem',
+
+    '@media screen and (max-width: 1000px)': {
+      marginRight: '5rem',
+    },
 
     '@media screen and (max-width: 768px)': {
       border: 0,
+      marginRight: 0,
+      boxShadow: 'none',
     },
-    
+
     form: {
       display: 'flex',
       flexDirection: 'column',
       gap: '0.5rem',
 
       width: '100%',
+
+      '.nameContainer': {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '0.5rem',
+        width: 'auto',
+
+        input: {
+          minWidth: '0'
+        }
+      },
+
+      '.typeContainer': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.25rem',
+      },
+
+      '.radioContainer': {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: '0.25rem',
+      },
 
       '.buttonContainer': {
         display: 'flex',
@@ -68,7 +112,7 @@ export const Logo = styled('h2', {
   fontSize: '1.5rem',
   margin: '0.5rem 0',
   cursor: 'pointer',
-  
+
   span: {
     color: '$green_700',
 
