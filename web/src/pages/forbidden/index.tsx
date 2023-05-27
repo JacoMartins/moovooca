@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Bus } from "phosphor-react";
+import { Bus } from "@phosphor-icons/react";
 import { Logo } from "../../components/Header/styles";
 import { ErrorMain } from "../../styles/global";
 

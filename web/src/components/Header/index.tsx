@@ -1,4 +1,4 @@
-import { Bus, List } from "phosphor-react";
+import { Bus, List } from "@phosphor-icons/react";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { HandleNav, HeaderContainer, Logo } from "./styles";
 

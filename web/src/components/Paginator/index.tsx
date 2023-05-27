@@ -1,4 +1,4 @@
-import { CaretDoubleLeft, CaretDoubleRight, CaretLeft, CaretRight } from "phosphor-react";
+import { CaretDoubleLeft, CaretDoubleRight, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useRef } from "react";
 import { PaginatorProps } from "../../types/components/PaginatorProps";
 import { int } from "../../utils/convert";

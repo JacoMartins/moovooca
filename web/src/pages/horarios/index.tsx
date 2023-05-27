@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import { api } from "../../services/api";
 import { BodyContainer, StopContainer } from "../../styles/pages/horarios";
-import { ArrowUpRight, Bus, CaretDown, MapPin } from "phosphor-react";
+import { ArrowUpRight, Bus, CaretDown, MapPin } from "@phosphor-icons/react";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { sentido } from "../../types/api/sentido";
 import { GetServerSidePropsContext } from "next";

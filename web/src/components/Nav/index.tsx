@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { NavButton, NavContainer } from "./styles";
-import { House, LineSegments, ListBullets, MagnifyingGlass, SignOut, Wrench } from 'phosphor-react';
+import { House, LineSegments, ListBullets, MagnifyingGlass, SignOut, Wrench } from '@phosphor-icons/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { NavProps } from "../../types/components/nav";
@@ -46,7 +46,7 @@ export default function Nav({ isNavOpen }: NavProps) {
         {autenticado ? (
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild={false} className="DropdownMenuButton">
-              <ProfileButton mainName={'noname'} />
+              <ProfileButton mainName={'noname'} weight="regular" />
             </DropdownMenu.Trigger>
 
             <DropdownMenu.Portal>

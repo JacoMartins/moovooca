@@ -72,6 +72,17 @@ export const slideLeftAndFade = keyframes({
   }
 });
 
+const slideDown = keyframes({
+  from: { height: 0 },
+  to: { height: 'var(--radix-accordion-content-height)' },
+});
+
+const slideUp = keyframes({
+  from: { height: 'var(--radix-accordion-content-height)' },
+  to: { height: 0 },
+});
+
+
 export const globalStyles = globalCss({
   '*': {
     margin: 0,
@@ -132,7 +143,7 @@ export const globalStyles = globalCss({
     alignItems: 'center',
     backgroundColor: '$black_50',
     color: '$black_800',
-    border: 'solid 1px $black_50',
+    border: '0',
     borderRadius: '0.375rem',
     padding: '0.5rem 0.5rem',
     fontSize: '1rem',
@@ -146,7 +157,6 @@ export const globalStyles = globalCss({
     },
 
     '&:active': {
-      border: 'solid 1px $black_150',
       transition: 'all 0.15s ease-in-out',
     }
   },
@@ -372,7 +382,7 @@ export const globalStyles = globalCss({
     zIndex: 999,
     outline: 'none',
     animation: `${open} 0.15s ease-out`,
-    
+
     '@media screen and (max-width: 720px)': {
       position: 'absolute',
       bottom: 0,
@@ -403,18 +413,18 @@ export const globalStyles = globalCss({
     width: '100%',
     padding: '0 0 1rem 0',
     margin: 0,
-    
+
     '.react-modal-close': {
       position: 'relative',
       border: 0,
       background: 'transparent',
       transition: 'filter 0.2s',
       cursor: 'pointer',
-  
+
       '&:hover': {
         filter: 'brightness(0.8)',
       },
-  
+
       zIndex: 999,
     },
 
@@ -422,6 +432,85 @@ export const globalStyles = globalCss({
       margin: 0
     }
   },
+
+  '.AccordionRoot': {
+    borderRadius: '6px',
+    backgroundColor: 'transparent',
+  },
+
+  '.AccordionItem': {
+    overflow: 'hidden',
+    marginTop: '1px',
+  },
+
+  '.AccordionItem:first-child': {
+    marginTop: 0,
+    borderTopLeftRadius: '4px',
+    borderTopRightRadius: '4px'
+  },
+
+  '.AccordionItem:last-child': {
+    borderBottomLeftRadius: '4px',
+    borderBottomRightRadius: '4px'
+  },
+
+  '.AccordionItem:focus-within': {
+    position: 'relative',
+    zIndex: 1,
+    boxShadow: `0 0 0 2px rgba(0, 0, 0, 0)`
+  },
+
+  '.AccordionHeader': {
+    display: 'flex',
+  },
+
+  '.AccordionTrigger': {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    fontFamily: 'inherit',
+    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+    padding: '0 0.75rem',
+    height: '45px',
+    flex: 1,
+    fontSize: '15px',
+    lineHeight: 1,
+    color: 'rgba(0, 0, 0, 0.8)',
+    boxShadow: `0 1px 0 rgba(0, 0, 0, 0.08)`,
+  },
+
+  '.AccordionTrigger:hover': {
+    backgroundColor: 'rgba(0, 0, 0, 0.08)'
+  },
+
+  '.AccordionContent': {
+    overflow: 'hidden',
+    fontSize: '15px',
+    color: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'white',
+  },
+
+  ".AccordionContent[data-state='open']": {
+    animation: `${slideDown} 300ms cubic-bezier(0.87, 0, 0.13, 1)`
+  },
+  ".AccordionContent[data-state='closed']": {
+    animation: `${slideUp} 300ms cubic-bezier(0.87, 0, 0.13, 1)`
+  },
+
+  '.AccordionContentContainer': {
+    padding: '0.5rem',
+  },
+
+  '.AccordionChevron': {
+    color: 'rgba(0, 0, 0, 0.8)',
+    transition: 'transform 300ms cubic-bezier(0.87, 0, 0.13, 1)',
+  },
+
+  ".AccordionTrigger[data-state='open'] > .AccordionChevron": {
+    transform: 'rotate(180deg)',
+  }
 });
 
 export const Footer = styled('footer', {
@@ -482,7 +571,7 @@ export const ErrorMain = styled('main', {
     '@media screen and (max-width: 768px)': {
       border: 0,
     },
-    
+
     form: {
       display: 'flex',
       flexDirection: 'column',

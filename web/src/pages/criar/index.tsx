@@ -1,9 +1,10 @@
-import { Bus, CircleNotch } from "phosphor-react";
+import { Bus, CircleNotch } from "@phosphor-icons/react";
 import { useContext, useState } from "react";
 import { api } from "../../services/api";
 import { Logo, Main } from "../../styles/pages/criar";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function CreateAccount() {
   const router = useRouter()
@@ -13,11 +14,13 @@ export default function CreateAccount() {
   const [email, setEmail] = useState<string>('')
   const [senha, setSenha] = useState<string>('');
   const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-  const [tipo, setTipo] = useState<number>(0);
+  const [tipo, setTipo] = useState<number>();
 
   const [busy, setBusy] = useState<boolean>(false);
 
   const [error, setError] = useState<string>();
+
+  const { auth } = useContext(AuthContext);
 
   function goTo(path: string) {
     router.push(path)
@@ -39,7 +42,7 @@ export default function CreateAccount() {
       return;
     }
 
-    if (!nome_usuario || !nome || !sobrenome || !email || !senha || !confirmarSenha) {
+    if (!nome_usuario || !nome || !sobrenome || !email || !senha || !confirmarSenha || tipo === null) {
       setError('Por favor, preencha todos os campos!');
       return;
     }
@@ -58,6 +61,11 @@ export default function CreateAccount() {
         senha,
         email,
         tipo
+      })
+
+      await auth({
+        identificador: nome_usuario,
+        senha
       })
 
       goTo('/')

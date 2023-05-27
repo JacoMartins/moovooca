@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import { api } from "../../services/api";
 import { BodyContainer, StopContainer } from "../../styles/pages/linha";
-import { ArrowUpRight, Bus, CaretDown, MapPin } from "phosphor-react";
+import { ArrowUpRight, Bus, CaretDown, MapPin } from "@phosphor-icons/react";
 import GoogleMapReact from 'google-map-react';
 import { Footer } from "../../styles/global";
 import { parada } from "../../types/api/parada";

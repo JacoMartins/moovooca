@@ -2,6 +2,7 @@ import { sentido } from "./sentido";
 
 export interface linha {
   id: number | null;
+  id_usuario: number | null;
   cod: number;
   nome: string;
   campus: string;

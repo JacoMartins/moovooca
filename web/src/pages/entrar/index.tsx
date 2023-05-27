@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Bus, CircleNotch } from "phosphor-react";
+import { Bus, CircleNotch } from "@phosphor-icons/react";
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Logo, Main } from "../../styles/pages/entrar";

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { CircleNotch, Export, Funnel, List, MagnifyingGlass, Plus, X } from "phosphor-react"
+import { CircleNotch, Export, Funnel, List, MagnifyingGlass, Plus, X } from "@phosphor-icons/react"
 import { useEffect, useState } from "react"
 import Table from "../../../../components/Table"
 import { api } from "../../../../services/api"

@@ -6,7 +6,7 @@ export const Container = styled('div', {
   alignItems: 'center',
   height: '2rem',
   width: '2rem',
-  borderRadius: '1rem',
+  borderRadius: '50%',
   border: '1px solid $black_200',
   overflow: 'hidden',
   cursor: 'pointer',

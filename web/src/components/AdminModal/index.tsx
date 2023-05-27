@@ -1,4 +1,4 @@
-import { ArrowSquareOut, CircleNotch, PencilSimple, Trash, X } from "phosphor-react"
+import { ArrowSquareOut, CircleNotch, PencilSimple, Trash, X } from "@phosphor-icons/react"
 import { useState } from "react"
 import { ChangeEvent, HTMLInputTypeAttribute } from "react"
 import { CSVLink } from "react-csv"

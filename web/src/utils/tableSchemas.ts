@@ -10,6 +10,7 @@ export const linhaSchema:linha_co = {
   dependants: ['sentido', 'parada', 'viagem'],
   fields: {
     id: null,
+    id_usuario: null,
     cod: 0,
     nome: '',
     campus: '',

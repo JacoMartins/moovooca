@@ -6,6 +6,7 @@ class LinhaModel(db.Model):
   __searchable__ = ['cod', 'nome', 'campus', 'tipo', 'tags']
 
   id = db.Column(db.Integer, primary_key=True, nullable=False)
+  id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), nullable=False)
   cod = db.Column(db.String(3), nullable=False)
   nome = db.Column(db.String, nullable=False)
   campus = db.Column(db.String, nullable=False)

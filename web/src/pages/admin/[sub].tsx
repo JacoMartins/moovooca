@@ -2,7 +2,7 @@ import Head from "next/head";
 import { BodyContainer, ListButton, Main, Sidebar } from "../../styles/pages/admin";
 import { useEffect, useState } from "react";
 import { Logo } from "../../styles/pages/entrar";
-import { Bus, Compass, House, MapPin, SignOut, Wrench } from "phosphor-react";
+import { Bus, Compass, House, MapPin, SignOut, Wrench } from "@phosphor-icons/react";
 import { useRouter } from "next/router";
 import { api } from "../../services/api";
 import { Usuario } from "../../types/api/usuario";
@@ -10,7 +10,7 @@ import { GetServerSidePropsContext } from "next";
 import { parseServerSideCookies } from "../../utils/parseServerSideCookies";
 import Forbidden from "../forbidden";
 
-import { Info, LineSegments, ListBullets, Path, Users } from "phosphor-react"
+import { Info, LineSegments, ListBullets, Path, Users } from "@phosphor-icons/react"
 import AdminLinhas from "./sub/linhas"
 import AdminSentidos from "./sub/sentidos"
 import AdminParadas from "./sub/paradas"

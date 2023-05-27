@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Modal from 'react-modal'
 import { api } from "../../services/api";
 import { BodyContainer, ModalContainer, StopContainer } from "../../styles/pages/viagem";
-import { Bus, CheckCircle, CircleNotch, MapPin, X } from "phosphor-react";
+import { Bus, CheckCircle, CircleNotch, MapPin, X } from "@phosphor-icons/react";
 import GoogleMapReact from 'google-map-react';
 import { GetServerSidePropsContext } from "next";
 import { ViagemProps } from "../../types/pages/Viagem";

@@ -3,7 +3,7 @@ import { BodyContainer } from '../styles/pages/home'
 
 import { api } from '../services/api'
 import { useState } from 'react'
-import { CircleNotch, MagnifyingGlass } from 'phosphor-react'
+import { CircleNotch, MagnifyingGlass } from '@phosphor-icons/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { GetServerSidePropsContext } from 'next'
