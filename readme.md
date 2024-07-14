@@ -23,7 +23,6 @@ Frontend (NodeJS):
 Backend (Python):
 
 - Flask
-- Flask MSearch
 - Flask Smorest
 - Flask Cors
 - Flask JWT
