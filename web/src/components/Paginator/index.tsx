@@ -73,11 +73,13 @@ export default function Paginator({ page, setPage, update, setUpdate, data }:Pag
             </button>
 
             <div className="pagesContainer" ref={pageContainerRef}>
-              {[...Array(int(data.pages))].map((key, value) => (
-                <button className={page === value + 1 ? 'pageSelected' : ''} key={value} onClick={(event: any) => handleChangePage(event.target.offsetLeft, value + 1)}>
-                  {value + 1}
-                </button>
-              ))}
+              {Array.from({ length: int(data.pages) }, (_, i) => {
+                return (
+                  <button key={i + 1} onClick={() => handleChangePage(i * 32, i + 1)} className={page === i + 1 ? 'active' : ''}>
+                    {i + 1}
+                  </button>
+                )
+              })}
             </div>
 
             <button onClick={handleNextPage} disabled={!(page < int(data.pages))}>

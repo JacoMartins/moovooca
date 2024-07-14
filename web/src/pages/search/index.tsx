@@ -72,7 +72,7 @@ export default function Search({ linhas, query, texto_gerado, page }) {
 
           <section className='lineSection'>
             <Table header={[]}>
-              {linhas.items.map((linha: linha) => {
+              {linhas.items?.map((linha: linha) => {
                 return (
                   <TableRow key={linha.id} data={{
                     linha:
@@ -114,7 +114,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const page = context.query.page ? context.query.page : 1
   const query = context.query.query || '';
 
-  const { data: linhas } = await api.get(`/linhas/search?query=${query}&page=${page}&limit=15`);
+  const { data: linhas } = await api.get(`/linhas/search?query=${query}&page=${page}&per_page=15`);
   // const { data: texto_gerado } = await api.post(`/linhas/search?query=${query}`);
 
   return {

@@ -45,14 +45,14 @@ class ViagemList(MethodView):
       pagination_object = {
         "items": viagens.items,
         "page": viagens.page,
-        "pages": viagens.pages
+        "per_page": viagens.pages
       }
       
       return pagination_object
     return {
       "items": viagens,
       "page": 1,
-      "pages": 1
+      "per_page": 1
     }
   
   def post(self, lid, sid, data_):

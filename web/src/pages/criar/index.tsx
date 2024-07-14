@@ -23,29 +23,22 @@ export default function CreateAccount() {
     router.push(path)
   }
 
-  function checkForm(func: Function) {
-    event?.preventDefault();
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÁÇÉǴÍḰĹḾŃÓṔŔŚÚǗẂÝŹḈÀÈÌǸÒÙǛẀỲÃẼĨÑÕŨṼỸãẽĩñõũṽỹÂĈÊĜĤÎĴÔŜÛṼỸâĉêĝĥîĵôŝûŵŷẑàìǹòùǜẁỳáçéǵíḱĺḿńóṕŕśúǘẃýź!#$%¨&*()-=[]~^`´:;/?>.<,| '.split('');
-
-    for (let n = 0; n < characters.length; n++) {
-      if (nome_usuario.includes(characters[n])) {
-        setError('Nome de usuário inválido. Tente não utilizar espaços, acentos ou letras maiúsculas.')
-        return;
-      }
+  function checkUsername(text: string) {
+    // verificação da quantidade de caracteres
+    if (text.length < 3) {
+      setError('Nome de usuário deve ter no mínimo 3 caracteres.');
+      return false;
     }
 
-    if (senha !== confirmarSenha) {
-      setError('As senhas não coincidem!');
-      return;
+    // regex para caracteres proibidos
+    const forbiddenCharRegex = /[ABCDEFGHIJKLMNOPQRSTUVWXYZÁÇÉǴÍḰĹḾŃÓṔŔŚÚǗẂÝŹḈÀÈÌǸÒÙǛẀỲÃẼĨÑÕŨṼỸãẽĩñõũṽỹÂĈÊĜĤÎĴÔŜÛṼỸâĉêĝĥîĵôŝûŵŷẑàìǹòùǜẁỳáçéǵíḱĺḿńóṕŕśúǘẃýź!#$%¨&*()\[\]=~^`´:;/?><,| ]/;
+
+    if (forbiddenCharRegex.test(text)) {
+      setError('Nome de usuário inválido. Tente não utilizar espaços, acentos ou letras maiúsculas.');
+      return false;
     }
 
-    if (!nome_usuario || !nome || !sobrenome || !email || !senha || !confirmarSenha) {
-      setError('Por favor, preencha todos os campos!');
-      return;
-    }
-
-    setError(null);
-    func();
+    return true;
   }
 
   async function createAccount() {
@@ -84,7 +77,7 @@ export default function CreateAccount() {
             </span>
           </Logo>
           <h4>Criar conta</h4>
-          <form onSubmit={() => checkForm(createAccount)}>
+          <form onSubmit={() => checkUsername(nome_usuario) && createAccount()}>
             <input type="text" placeholder="Nome de usuário" onChange={event => setNome_usuario(event.target.value)} />
             <div className="nameContainer">
               <input type="text" placeholder="Nome" onChange={event => setNome(event.target.value)} />
@@ -103,7 +96,7 @@ export default function CreateAccount() {
                   <input name="type_radio" id="user_radio" type="radio" value="0" onChange={event => setTipo(0)} />
                   <label htmlFor="user_radio">Usuário</label>
                 </div>
-                
+
                 <div className="radioContainer">
                   <input name="type_radio" id="corp_radio" type="radio" value="1" onChange={event => setTipo(1)} />
                   <label htmlFor="corp_radio">Empresa</label>

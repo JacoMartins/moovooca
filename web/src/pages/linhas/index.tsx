@@ -50,12 +50,12 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
 
   useEffect(() => {
     if (modalType === 0) {
-      const fetch = async () => await api.get(`/linhas?tipo=COLETIVO&page=${page}&limit=15`).then(res => setColetivos(res.data))
+      const fetch = async () => await api.get(`/linhas?tipo=COLETIVO&page=${page}&per_page=10`).then(res => setColetivos(res.data))
       fetch()
     }
 
     if (modalType === 1) {
-      const fetch = async () => await api.get(`/linhas?tipo=PRIVADO&page=${page}&limit=15`).then(res => setPrivados(res.data))
+      const fetch = async () => await api.get(`/linhas?tipo=PRIVADO&page=${page}&per_page=10`).then(res => setPrivados(res.data))
       fetch()
     }
   }, [modalType, page])
@@ -86,9 +86,9 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
 
           <div className="react-modal-container">
             <ModalContainer>
-              {modalType == 0 &&
+              {coletivos && modalType == 0 &&
                 <Table header={['Todos']}>
-                  {coletivos && coletivos.items.map((linha: linha) => {
+                  {coletivos.items?.map((linha: linha) => {
                     return (
                       <TableRow key={linha.id} data={{
                         linha:
@@ -109,7 +109,7 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
 
               {modalType == 1 &&
                 <Table header={['Todos']}>
-                  {privados && privados.items.map((linha: linha) => {
+                  {privados.items && privados.items.map((linha: linha) => {
                     return (
                       <TableRow key={linha.id} data={{
                         linha:
@@ -151,7 +151,7 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
           </section>
 
           <section className='lineSection'>
-            {head_coletivos.items.length > 0 &&
+            {head_coletivos.items && head_coletivos.items.length > 0 &&
               <Table header={['Transporte Público: Coletivos']}>
                 {head_coletivos.items.map((linha: linha) => {
                   return (
@@ -183,7 +183,7 @@ export default function Linhas({ head_coletivos, head_privados, page }) {
               </Table>
             }
 
-            {head_privados.items.length > 0 && <Table header={['Transporte Privado']}>
+            {head_privados.items && head_privados.items.length > 0 && <Table header={['Transporte Privado']}>
               {head_privados.items.map((linha: linha) => {
                 return (
                   <TableRow key={linha.id} data={{
@@ -224,8 +224,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { page } = context.query
   const page_ = page ? page : 1
 
-  const { data: head_coletivos } = await api.get(`/linhas?tipo=COLETIVO&page=${page_}&limit=15`);
-  const { data: head_privados } = await api.get(`/linhas?tipo=PRIVADO&page=${page_}&limit=15`);
+  const { data: head_coletivos } = await api.get(`/linhas?tipo=COLETIVO&page=${page_}`);
+  const { data: head_privados } = await api.get(`/linhas?tipo=PRIVADO&page=${page_}`);
 
   return {
     props: {

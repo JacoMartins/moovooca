@@ -34,14 +34,14 @@ class SentidoList(MethodView):
       pagination_object = {
         "items": sentidos.items,
         "page": sentidos.page,
-        "pages": sentidos.pages
+        "per_page": sentidos.pages
       }
 
       return pagination_object
     return {
       "items": sentidos,
       "page": 1,
-      "pages": 1
+      "per_page": 1
     }
 
 @blp.route('/sentido')

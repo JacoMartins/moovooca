@@ -46,7 +46,7 @@ class ReservaList(MethodView):
       pagination_object = {
         "items": reservas.items,
         "page": reservas.page,
-        "pages": reservas.pages
+        "per_page": reservas.pages
       }
 
       return pagination_object
@@ -54,7 +54,7 @@ class ReservaList(MethodView):
     return {
       "items": reservas,
       "page": 1,
-      "pages": 1
+      "per_page": 1
     }
 
 @blp.route('/reserva')

@@ -4,7 +4,6 @@ from db import db
 
 from flask import Flask, jsonify
 from flask_smorest import Api
-from flask_msearch import Search
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 
@@ -42,10 +41,6 @@ def create_app(db_url=None):
   app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")
   app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-  app.config['MSEARCH_INDEX_NAME'] = os.path.join(app.root_path, 'msearch')
-  app.config['MSEARCH_PRIMARY_KEY'] = 'id'
-  app.config['MSEARCH_ENABLE'] = True
-
   app.config['CORS_HEADERS'] = 'Content-Type'
 
   app.config["JWT_COOKIE_SECURE"] = True
@@ -57,13 +52,10 @@ def create_app(db_url=None):
   db.init_app(app)
 
   api = Api(app)
-  search = Search(app)
   cors = CORS(app, resources={
     r'/*': {'origins': '*'},
   })
   
-  search.init_app(app)
-
   jwt = JWTManager(app)
 
   @jwt.token_in_blocklist_loader

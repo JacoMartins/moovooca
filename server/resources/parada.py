@@ -39,13 +39,13 @@ class ParadaList(MethodView):
       return {
         "items": paradas.items,
         "page": paradas.page,
-        "pages": paradas.pages
+        "per_page": paradas.pages
       }
     
     return {
       "items": paradas,
       "page": 1,
-      "pages": 1
+      "per_page": 1
     }
 
 

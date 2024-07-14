@@ -37,7 +37,7 @@ class Usuarios(MethodView):
         pagination_object = {
           "items": usuarios.items,
           "page": usuarios.page,
-          "pages": usuarios.pages
+          "per_page": usuarios.pages
         }
 
         return pagination_object
@@ -45,7 +45,7 @@ class Usuarios(MethodView):
       return {
         "items": usuarios,
         "page": 1,
-        "pages": 1
+        "per_page": 1
       }
     else:
       abort(401, 'Unauthorized.')

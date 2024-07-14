@@ -52,7 +52,7 @@ class PlainSentidoSchema(Schema):
 
 
 class LinhaSchema(Schema):
-  id = fields.Int()
+  id = fields.Int(required=False, dump_only=True)
   cod = fields.Str(required=True)
   nome = fields.Str(required=True)
   campus = fields.Str(required=True)
@@ -60,9 +60,9 @@ class LinhaSchema(Schema):
   valor_meia = fields.Float(required=True)
   tipo = fields.Str(required=True)
   capacidade_assento = fields.Int(required=True)
-  tags = fields.Str()
-  criado_em = fields.DateTime()
-  atualizado_em = fields.DateTime()
+  tags = fields.Str(required=False, dump_only=True)
+  criado_em = fields.DateTime(required=False, dump_only=True)
+  atualizado_em = fields.DateTime(required=False, dump_only=True)
 
   sentidos = fields.List(fields.Nested(PlainSentidoSchema(), dump_only=True))
 
@@ -116,7 +116,7 @@ class PlainParadaSchema(Schema):
 
 
 class PlainLinhaSchema(Schema):
-  id = fields.Int()
+  id = fields.Int(dump_only=False)
   cod = fields.Str(required=True)
   nome = fields.Str(required=True)
   campus = fields.Str(required=True)
@@ -124,9 +124,9 @@ class PlainLinhaSchema(Schema):
   valor_meia = fields.Float(required=True)
   tipo = fields.Str(required=True)
   capacidade_assento = fields.Int(required=True)
-  tags = fields.Str()
-  criado_em = fields.DateTime()
-  atualizado_em = fields.DateTime()
+  tags = fields.Str(dump_only=False)
+  criado_em = fields.DateTime(dump_only=False)
+  atualizado_em = fields.DateTime(dump_only=False)
 
 
 class SentidoSchema(Schema):
@@ -192,35 +192,35 @@ class ReservaSchema(Schema):
 
 class LinhaPaginationSchema(Schema):
   items = fields.List(fields.Nested(LinhaSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
 
 
 class SentidoPaginationSchema(Schema):
   items = fields.List(fields.Nested(SentidoSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
 
 
 class ParadaPaginationSchema(Schema):
   items = fields.List(fields.Nested(ParadaSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
 
 
 class ReservaPaginationSchema(Schema):
   items = fields.List(fields.Nested(ReservaSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
 
 
 class UsuarioPaginationSchema(Schema):
   items = fields.List(fields.Nested(UsuarioSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
 
 
 class ViagemPaginationSchema(Schema):
   items = fields.List(fields.Nested(ViagemSchema(), dump_only=True))
-  page = fields.Str(required=True)
-  pages = fields.Str(required=True)
+  page = fields.Int(required=True)
+  per_page = fields.Int(required=True)
